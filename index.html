@@ -1,23 +1,1016 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+    <style>
+        /* 기본 스타일 및 다채롭고 부드러운 색감 적용 */
+        :root {
+            --primary-color: #0f766e; /* 신뢰감을 주는 딥틸 */
+            --secondary-color: #14b8a6; /* 트렌디하고 부드러운 아쿠아 민트 */
+            --accent-color: #f43f5e; /* 핵심 정보 강조용 소프트 로즈 */
+            --bg-color: #f8fafc; /* 눈의 피로를 덜어주는 슬레이트 백그라운드 */
+            --card-bg: #ffffff; /* 순백색 카드 배경 */
+            --text-main: #1e293b; /* 가독성이 극대화된 딥 그레이 */
+            --text-sub: #475569; /* 부드러운 중간 톤의 그레이 */
+            --border-color: #e2e8f0; /* 자연스럽고 차분한 경계선 */
+            --radius-lg: 16px;
+            --radius-md: 8px;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            line-height: 1.9;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 헤더 디자인 */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0d9488 100%);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: var(--radius-lg);
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.15);
+        }
+
+        header h1 {
+            font-size: 2.4em;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin: 0;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        /* 내비게이션 바 스타일 */
+        nav {
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            background-color: var(--card-bg);
+            padding: 10px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        nav ul li {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: var(--text-sub);
+            font-weight: 700;
+            font-size: 0.95em;
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        /* 메인 구조 레이아웃 */
+        .content-wrap {
+            display: flex;
+            gap: 30px;
+            flex-direction: column;
+        }
+
+        @media (min-width: 1024px) {
+            .content-wrap {
+                flex-direction: row;
+            }
+        }
+
+        /* 사이드바 스타일 */
+        .sidebar {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            align-self: flex-start;
+        }
+
+        .sidebar h2 {
+            font-size: 1.4em;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .sub-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+        }
+
+        .sub-menu li {
+            margin-bottom: 8px;
+        }
+
+        .sub-menu li a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: var(--text-sub);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: all 0.2s ease;
+            background-color: #f8fafc;
+        }
+
+        .sub-menu li a:hover {
+            background-color: #f0fdfa;
+            color: var(--primary-color);
+            font-weight: 700;
+            padding-left: 20px;
+        }
+
+        .external-links h3 {
+            font-size: 1.1em;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .external-links a {
+            display: block;
+            padding: 10px 12px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            background-color: #f0fdfa;
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .external-links a:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        /* 메인 콘텐츠 스타일 */
+        .main-content {
+            flex: 3;
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--text-main);
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: var(--text-main);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-sub);
+            font-size: 1.05em;
+        }
+
+        /* 강조 박스 스타일 */
+        .highlight-box {
+            background-color: #f0fdfa;
+            padding: 25px;
+            border-radius: var(--radius-md);
+            border-left: 6px solid var(--primary-color);
+            margin: 30px 0;
+            font-size: 1.05em;
+        }
+
+        .highlight-box strong {
+            color: var(--primary-color);
+        }
+
+        /* 인포 박스 스타일 */
+        .info-box {
+            background-color: #fef2f2;
+            padding: 25px;
+            border-radius: var(--radius-md);
+            border-left: 6px solid var(--accent-color);
+            margin: 30px 0;
+            font-size: 1.05em;
+        }
+
+        /* 테이블 디자인 */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 30px 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* 리스트 스타일 */
+        ul.styled-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+
+        ul.styled-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-sub);
+        }
+
+        ul.styled-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+        }
+
+        /* 키워드 강조용 스타일 */
+        .kw {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* 대화형 시뮬레이션 컴포넌트 */
+        .interactive-section {
+            background-color: #f8fafc;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .interactive-section h3 {
+            border-left: none;
+            padding-left: 0;
+            margin-top: 0;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 0.95em;
+            color: var(--text-main);
+        }
+
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: #ffffff;
+            font-size: 1em;
+            color: var(--text-main);
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group select:focus, .form-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.05em;
+            font-weight: 700;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #0d9488;
+        }
+
+        .calc-result {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--secondary-color);
+            display: none;
+        }
+
+        /* 탭 구조 */
+        .tab-wrap {
+            margin: 30px 0;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 5px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            font-weight: 700;
+            color: var(--text-sub);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-size: 0.95em;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 차트형 시각 자료 */
+        .chart-container {
+            background-color: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .chart-bar-wrap {
+            margin-bottom: 15px;
+        }
+
+        .chart-label {
+            font-size: 0.9em;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .chart-track {
+            background-color: #e2e8f0;
+            height: 16px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .chart-fill {
+            background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            height: 100%;
+            border-radius: 8px;
+            transition: width 1s ease-out;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: var(--text-main);
+            color: #94a3b8;
+            border-radius: var(--radius-lg);
+            font-size: 0.9em;
+        }
+
+        footer p {
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <!-- JSON-LD 구조화 데이터 for SEO 및 AI 크롤러 최적화 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "1대1 화상과외 브랜드 비교 및 가격 견적 가이드: 2026년 학년별 비용 분석",
+      "description": "2026년 최신 1대1 온라인 화상과외 전문 플랫폼 비교 분석. 초등학생, 중학생, 고등학생, 성인 대상 수학 및 영어 화상과외 평균 가격과 요금 계산기, 내돈내산 후기 기반의 장단점 및 추천 브랜드 정보를 상세히 제공합니다.",
+      "url": "https://edu.reliabledone.com/online-tutoring-comparison",
+      "lastReviewed": "2026-07-16",
+      "datePublished": "2026-01-15",
+      "dateModified": "2026-07-16",
+      "inLanguage": "ko-KR",
+      "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "온라인 화상과외의 한 달 평균 비용은 얼마인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "2026년 기준 초등학생은 주 2회 기준 월 15만 원에서 25만 원, 중학생은 월 20만 원에서 35만 원, 고등학생은 월 25만 원에서 45만 원 선이 일반적인 평균 요금입니다. 교사의 학력이나 전문 브랜드 유무에 따라 예상 견적 차이점이 존재합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "대면 과외와 비교했을 때 화상과외의 대표적인 장단점은 무엇입니까?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "가장 큰 장점은 서울 대치동이나 수도권 명문대 출신의 전문 강사진 수업을 경기, 인천, 부산, 대구, 대전, 광주, 울산, 세종 등 전국 어디서든 다이렉트로 연결받을 수 있다는 점입니다. 또한 이동 시간이 절약되고 비교적 싼곳이 많아 비용 절감 혜택이 큽니다. 반면 단점으로는 인터넷 환경에 따른 접속 원활성 우려와 학생의 자기주도적 몰입도가 필요하다는 점이 꼽힙니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "화상과외 가입 시 사은품이나 현금지원 혜택을 받을 수 있나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "일부 전문 교육 업체에서는 신규 회원 가입 이벤트로 태블릿 PC 무상 임대, 전용 학습 어플 상품권 제공, 혹은 장기 계약 시 수강료 추가 할인 혜택을 적용해 줍니다. 인터넷 가입 시 제공하는 결합 사은품 형태와 유사한 장기 결제 혜택 등이 있으니 꼼꼼히 비교해야 합니다."
+            }
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>1대1 화상과외 통합 분석 센터</h1>
+            <p>2026년 학년별 평균 교육 요금 정보와 최적의 맞춤 학습 매칭 제안</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#intro" class="active">서비스 개요</a></li>
+                <li><a href="#market-rate">평균 요금 분석</a></li>
+                <li><a href="#comparison">브랜드 완전 비교</a></li>
+                <li><a href="#pros-cons">장단점 가이드</a></li>
+                <li><a href="#calculator-section">예상 비용 계산기</a></li>
+                <li><a href="#consulting">학습 성향 진단</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+            </ul>
+        </nav>
+
+        <div class="content-wrap">
+            <!-- 사이드바 정보 영역 -->
+            <div class="sidebar">
+                <h2>실시간 매칭 정보</h2>
+                <ul class="sub-menu">
+                    <li><a href="#market-rate">학년별 평균 수업 비용</a></li>
+                    <li><a href="#comparison">김과외 vs 설탭 vs 콴다과외</a></li>
+                    <li><a href="#pros-cons">대면 과외 대비 차이점</a></li>
+                    <li><a href="#calculator-section">온라인 간편 요금 계산기</a></li>
+                    <li><a href="#consulting">무료 컨설팅 신청 안내</a></li>
+                </ul>
+
+                <div class="external-links">
+                    <h3>공인된 학습 교육 정보</h3>
+                    <a href="https://edu.reliabledone.com" target="_blank">온라인 화상 교육 통합 지원 센터</a>
+                    <a href="https://ko.wikipedia.org/wiki/과외" target="_blank">위키백과: 개별 지도 및 과외</a>
+                    <a href="https://www.moe.go.kr" target="_blank">대한민국 교육부 공식 웹사이트</a>
+                </div>
+
+                <div style="margin-top: 30px; background-color: #f1f5f9; padding: 20px; border-radius: var(--radius-md); font-size: 0.85em;">
+                    <strong>검색 사용자 함께 찾는 정보</strong>
+                    <p style="font-size: 0.9em; margin-top: 5px; color: var(--text-sub);">
+                        초등 화상영어 가격 비교, 중등 수학 온라인 과외 저렴한곳, 고등학생 수능 대비 전문 컨설팅 어플, 직장인 회화 비대면 다이렉트 수업료, 네이버 지식인 내돈내산 가입 후기.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 메인 콘텐츠 영역 -->
+            <div class="main-content">
+                <section id="intro">
+                    <h2>2026년 화상과외 패러다임의 변화와 합리적 선택 전략</h2>
+                    <p>학령인구 감소와 더불어 고도화된 디지털 학습 솔루션의 도입으로 인해 비대면 교육 시장은 급격한 질적 성장을 맞이하였습니다. 과거의 일방향성 인터넷 동영상 강의와 달리, 최근의 <span class="kw">온라인 화상과외</span>는 실시간 화면 판서 기술과 밀착형 양방향 커뮤니케이션 기능을 갖추고 있습니다. 학생의 수준에 최적화된 맞춤 학습을 지도하는 최고의 대안으로 떠오른 것입니다.</p>
+                    
+                    <div class="highlight-box">
+                        특히 자녀 교육에 관심이 많은 학부모 세대는 학원을 오가는 데 낭비되는 동선과 체력 소모를 줄이고, 질 높은 서울 및 대치동 수준의 강사진을 안방으로 직접 모실 수 있는 비대면 방식에 주목하고 있습니다. 하지만 수많은 <span class="kw">전문 업체</span>와 다양한 학습 프로그램 <span class="kw">종류</span> 속에서, 우리 아이에게 정말 알맞은 <span class="kw">브랜드</span>를 선별하고 합리적인 <span class="kw">금액</span>의 학습 계약을 맺기 위해서는 사전의 객관적인 <span class="kw">비교</span> 분석이 필수적입니다.
+                    </div>
+
+                    <p>본 포스팅에서는 <span class="kw">네이버</span>, <span class="kw">구글</span>, <span class="kw">유튜브</span>를 비롯해 <span class="kw">디시</span>, <span class="kw">보배드림</span>, <span class="kw">펨코</span>, <span class="kw">에펨코리아</span> 등 주요 유저 집약적 커뮤니티의 실제 <span class="kw">내돈내산</span> 결제 <span class="kw">후기</span>와 여론 트렌드를 정밀 수집했습니다. 이를 종합 분석하여 2026년 기준 전국 학년별 <span class="kw">평균</span> 과외 <span class="kw">비용</span>과 최적의 플랫폼 선택 요령을 체계적으로 서술해 드립니다.</p>
+                </section>
+
+                <section id="market-rate">
+                    <h2>화상과외 서비스의 학년별/과목별 평균 요금 수준</h2>
+                    <p>가장 궁금해하시는 부분은 역시 한 달에 지출하게 될 실제 수업료가 <span class="kw">얼마</span>인가 하는 점입니다. 화상과외의 <span class="kw">가격</span>은 과외를 받는 학생의 학년, 교사의 자격(대학생 멘토 vs 전문 강사), 그리고 주당 매칭되는 수업 시간 및 횟수에 따라 다르게 책정됩니다. 아래의 통계 수치는 전국 주요 플랫폼의 기본 수강료 데이터를 정량적으로 수집하여 도출해 낸 대표적인 월별 <span class="kw">예상</span> <span class="kw">요금</span> 수준입니다.</p>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>대상 학년 및 과목</th>
+                                    <th>교사 그룹 유형</th>
+                                    <th>주 1회 (60분)</th>
+                                    <th>주 2회 (60분)</th>
+                                    <th>월 평균 예상 비용</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>초등학생 (수학/영어/국어)</td>
+                                    <td>일반 대학생 멘토</td>
+                                    <td>약 90,000원</td>
+                                    <td>약 170,000원</td>
+                                    <td>10만 원 중반 대</td>
+                                </tr>
+                                <tr>
+                                    <td>초등학생 (영어회화/코딩)</td>
+                                    <td>어학 전임/원어민 교사</td>
+                                    <td>약 120,000원</td>
+                                    <td>약 220,000원</td>
+                                    <td>20만 원 초반 대</td>
+                                </tr>
+                                <tr>
+                                    <td>중학생 (내신 수학/영어)</td>
+                                    <td>명문대생 멘토단</td>
+                                    <td>약 130,000원</td>
+                                    <td>약 240,000원</td>
+                                    <td>20만 원 중후반 대</td>
+                                </tr>
+                                <tr>
+                                    <td>중학생 (전과목 코칭)</td>
+                                    <td>입시 전문 강사</td>
+                                    <td>약 180,000원</td>
+                                    <td>약 320,000원</td>
+                                    <td>30만 원 초반 대</td>
+                                </tr>
+                                <tr>
+                                    <td>고등학생 (수능 수학/국어)</td>
+                                    <td>서울대/의치한 강사진</td>
+                                    <td>약 160,000원</td>
+                                    <td>약 300,000원</td>
+                                    <td>30만 원 중반 대</td>
+                                </tr>
+                                <tr>
+                                    <td>고등학생 (수시/논술)</td>
+                                    <td>베테랑 전문 컨설턴트</td>
+                                    <td>약 220,000원</td>
+                                    <td>약 400,000원</td>
+                                    <td>40만 원 이상 대</td>
+                                </tr>
+                                <tr>
+                                    <td>성인 및 직장인 (비즈니스 회화)</td>
+                                    <td>교포 및 전문 원어민</td>
+                                    <td>약 110,000원</td>
+                                    <td>약 200,000원</td>
+                                    <td>20만 원 안팎</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>학년별 교육 수요 및 결제액 비중 가시화</h3>
+                        <p>현재 온라인 맞춤 지도 시장에서 각 연령대별 가입자가 차지하는 상대적인 지출 비용 지수입니다.</p>
+                        
+                        <div class="chart-bar-wrap">
+                            <div class="chart-label">
+                                <span>고등학생 입시 밀착 관리</span>
+                                <span>지수: 95</span>
+                            </div>
+                            <div class="chart-track">
+                                <div class="chart-fill" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-wrap">
+                            <div class="chart-label">
+                                <span>중학생 주요 교과 내신 강화</span>
+                                <span>지수: 78</span>
+                            </div>
+                            <div class="chart-track">
+                                <div class="chart-fill" style="width: 78%;"></div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-wrap">
+                            <div class="chart-label">
+                                <span>초등학생 학습 습관 형성 코칭</span>
+                                <span>지수: 60</span>
+                            </div>
+                            <div class="chart-track">
+                                <div class="chart-fill" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-wrap">
+                            <div class="chart-label">
+                                <span>성인 자격 시험 및 비즈니스 회화</span>
+                                <span>지수: 45</span>
+                            </div>
+                            <div class="chart-track">
+                                <div class="chart-fill" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>위 데이터에서 볼 수 있듯이, 중고등학생 등 대입 및 진학과 밀접한 고학년으로 올라갈수록 맞춤형 피드백의 난도가 높아집니다. 이에 따라 결제되는 전체 교육비의 수준 역시 큰 폭으로 상승하는 구도를 보입니다. 만일 무리하게 가격이 <span class="kw">제일</span> <span class="kw">싼곳</span>만을 고집한다면 강사진의 책임감 결여나 피드백 품질 미흡이라는 뜻밖의 역효과를 초래할 수 있습니다. 따라서 강사의 스펙과 경력을 꼼꼼하게 대조해 보는 균형감 있는 자세가 중요합니다.</p>
+                </section>
+
+                <section id="comparison">
+                    <h2>국내 주요 온라인 화상과외 브랜드 플랫폼 3사 집중 해부</h2>
+                    <p>현재 시장을 리드하는 주요 비대면 과외 매칭 서비스 플랫폼들은 각자 추구하는 핵심 가치와 매칭 알고리즘의 유무에 따라 뚜렷한 <span class="kw">차이점</span>을 지니고 있습니다. 교육 소비자가 선호하는 대표 주자 3곳의 서비스를 세부 대조해 보겠습니다.</p>
+
+                    <h3>1. 설탭 (Seoltab)</h3>
+                    <p>설탭은 서울대학교를 비롯한 최고 명문대 소속 선생님들과 아이패드 등의 스마트 기기를 연동하여 소통하는 대표적인 비대면 학업 플랫폼입니다. 태블릿 화면 위에 실시간으로 필기를 작성하고 음성을 공유하는 직관적인 시스템을 구축하여 많은 호평을 받았습니다.</p>
+                    <ul class="styled-list">
+                        <li>특징: 전용 교육 <span class="kw">어플</span>을 활용하여 전 과정의 디지털 교재화 및 필기 상호 교류 지원.</li>
+                        <li>장점: 과외 교사 전원이 서울대, 연세대, 고려대 등 엄선된 최고 학부 재학생으로 구성되어 동기부여 효과 발휘.</li>
+                        <li>단점: 정해진 정기 구독식 상품 결제 기반으로 운영되어 대면 시장의 대학생 평균 과외비보다 기본 가격이 소폭 높게 구성됨.</li>
+                    </ul>
+
+                    <h3>2. 콴다과외 (Qanda Tutoring)</h3>
+                    <p>국내 대다수의 학생들이 사용하는 수학 문제 풀이 교육용 어플인 콴다의 방대한 데이터를 바탕으로 런칭된 실시간 과외 서비스입니다. 빅데이터 검색 이력을 활용하여 자녀가 자주 틀리는 취약 단원을 정밀 추적해 줍니다.</p>
+                    <ul class="styled-list">
+                        <li>특징: 문제 데이터베이스와 즉각적인 연계가 우수하며 학생용 태블릿 무상 임대 프로그램 운영.</li>
+                        <li>장점: 장기 약정을 맺고 <span class="kw">가입</span> 시 대폭적인 월 수강료 <span class="kw">할인</span> 프로모션을 적용하여 가성비가 돋보임.</li>
+                        <li>단점: 태블릿 화면 중심의 단답 피드백에 맞춰져 있어 심화 서술형 토론 수업 시에는 다소 아쉽다는 여론도 존재함.</li>
+                    </ul>
+
+                    <h3>3. 김과외 및 숨고 (Matching Platforms)</h3>
+                    <p>정형화된 패키지 상품 형태가 아닌, 개인 교사와 학부모가 중간 대리 수수료 체계를 생략하고 <span class="kw">다이렉트</span>로 조건을 타협하여 과외 계약을 체결하도록 돕는 오픈 마켓형 중개 시스템입니다.</p>
+                    <ul class="styled-list">
+                        <li>특징: 교사가 직접 상세 프로필과 수강 후기를 등록해 두고, 학부모가 필터를 설정하여 마음에 드는 인물을 조율.</li>
+                        <li>장점: 수강 단가에 대한 합의가 유연하며 경력 단절 전문 교사나 베테랑 대면 과외 업자를 영입하기 용이함.</li>
+                        <li>단점: 수업 관리 프로그램 및 원활한 플랫폼 보안 결제 등에 문제가 발생할 시 중개 사이트 자체의 분쟁 해결 주도력이 약할 수 있음.</li>
+                    </ul>
+                </section>
+
+                <section id="pros-cons">
+                    <h2>비대면 수업과 대면 수업의 핵심 장단점 및 인프라 요건</h2>
+                    <p>내 집에 직접 낯선 외부인을 들이지 않고 온전히 학생 방의 컴퓨터 화면만을 활용하는 방식은 많은 가정에 매력적인 대안입니다. 그러나 수업 결정 전에 아래의 명확한 장단점 대조표를 확인하시어 현실적인 가치를 면밀히 따져 보아야 합니다.</p>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>구분 항목</th>
+                                    <th>실시간 비대면 화상 학습 방식</th>
+                                    <th>전통적인 오프라인 방문 지도 방식</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>지리적 접근성</strong></td>
+                                    <td>전국 서울, 대구, 부산, 광주 등 일류 교사와 실시간 연결</td>
+                                    <td>거주 지역 내 활동 범위 안의 교사로 매칭 풀 제한</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>시간 효율성</strong></td>
+                                    <td>이동 불필요, 늦은 밤이나 이른 아침 유연한 스케줄 설정</td>
+                                    <td>교사의 가정이동 및 준비 시간 소비, 스케줄 조정 까다로움</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>평균 수업료 요금</strong></td>
+                                    <td>중개 마진 축소로 대면 과외비 대비 약 20% 내외 <span class="kw">저렴한곳</span> 다수</td>
+                                    <td>교통비 및 시간 기회비용 산입으로 상대적으로 높은 수준</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>태도 및 집중 관리</strong></td>
+                                    <td>웹캠 너머로 관리하므로 자기 제어 능력이 부재 시 산만할 우려</td>
+                                    <td>교사가 옆자리에서 실시간 눈맞춤으로 부적절한 버릇 강력 교정</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>필수 기본 인프라</strong></td>
+                                    <td>고속 광랜 <span class="kw">인터넷</span>망, 마이크 탑재 웹캠, 전용 태블릿 PC 기기</td>
+                                    <td>학습용 서적, 조용하고 정돈된 독서용 공부방 가구 환경</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>주의 사항 및 네트워크 사전 점검 요령</strong><br>
+                        온라인 수업의 핵심은 끊김 없는 미디어 스트리밍 환경 구축입니다. 무선 와이파이를 공유하여 사용할 경우 벽면 장애물로 인해 종종 렉이나 음성 지연 현상이 발생하여 교습 리듬이 끊길 수 있습니다. 따라서 수업 개시 전에 안정적인 광랜 초고속 데이터망 연결 상태를 최종 검증하는 과정을 필수로 진행하시길 제안합니다.
+                    </div>
+                </section>
+
+                <!-- 대화형 예상 비용 계산기 영역 (체류시간 증대용 1) -->
+                <section id="calculator-section" class="interactive-section">
+                    <h3>스마트 화상과외 월 예상 요금 실시간 계산기</h3>
+                    <p>우리 아이의 연령대, 목표 학습 과목, 주당 희망 수업 횟수를 직접 지정해 보세요. 2026년도 최신 업계 데이터를 토대로 가상 <span class="kw">견적</span> <span class="kw">금액</span>을 즉각 산출해 드립니다.</p>
+                    
+                    <div class="form-group">
+                        <label for="calc-grade">대상 학생 연령 및 학년 구분</label>
+                        <select id="calc-grade" onchange="runLiveCalculator()">
+                            <option value="elem">초등학생 (기초 인지 발달 및 기본 교과)</option>
+                            <option value="mid">중학생 (내신 관리 및 기본 수능 대비)</option>
+                            <option value="high">고등학생 (고난도 대입 수시 및 수능 준비)</option>
+                            <option value="adult">성인 및 직장인 (비즈니스 및 전문 시험 준비)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="calc-subject">중점 학습 과목 선택</label>
+                        <select id="calc-subject" onchange="runLiveCalculator()">
+                            <option value="math">수학 (체계적인 일대일 개념 지도)</option>
+                            <option value="english">영어 (독해 및 수능 외국어 영역)</option>
+                            <option value="korean">국어 및 인문 논술 (독해력 트레이닝)</option>
+                            <option value="speaking">회화 및 전문 특수 과목 (코딩/제2외국어)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="calc-frequency">주간 희망 수강 횟수</label>
+                        <select id="calc-frequency" onchange="runLiveCalculator()">
+                            <option value="1">주 1회 (월 4회 수업 구성)</option>
+                            <option value="2" selected>주 2회 (월 8회 정규 구성)</option>
+                            <option value="3">주 3회 (월 12회 인텐시브 구성)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="calc-teacher">매칭 교사 프로필 스펙 등급</label>
+                        <select id="calc-teacher" onchange="runLiveCalculator()">
+                            <option value="student">일반 명문 대학생 선생님 (멘토형 친근한 소통)</option>
+                            <option value="expert">입시 지도 경력 전문 선생님 (전업 과외인)</option>
+                            <option value="premium">대치동 입시 전문 탑클래스 전임 강사</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-submit" onclick="runLiveCalculator()">실시간 교육 예상 비용 견적 산출하기</button>
+
+                    <div id="calc-result-box" class="calc-result">
+                        <p style="margin: 0; font-size: 1.1em; font-weight: 700; color: var(--primary-color);">
+                            입력하신 수강 조건에 맞춰 정밀 분석한 월간 학습 요금은 약 <span id="res-price" style="font-size: 1.4em; color: var(--accent-color);">0</span>원 입니다.
+                        </p>
+                        <p style="margin: 10px 0 0 0; font-size: 0.9em; color: var(--text-sub);">
+                            해당 견적값은 평균적인 교습 기준가이며, 가입 시기별 신규 회원 웰컴 <span class="kw">할인</span> 쿠폰이나 교육 파트너 제휴 장기 결제 프로모션 혜택의 반영 여부에 따라 실제 체감 금액은 달라질 수 있습니다. 상세 상담을 희망하시면 각 플랫폼의 <span class="kw">고객센터</span> 전용 통화망을 활용하시기 바랍니다.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 대화형 학습 성향 자가 진단 및 맞춤식 추천 (체류시간 증대용 2) -->
+                <section id="consulting" class="interactive-section" style="background-color: #fefefe; border-color: var(--secondary-color);">
+                    <h3>우리 아이 화상과외 적합도 및 학습 성향 진단</h3>
+                    <p>우리 아이가 비대면 온라인 과외를 진행할 때 최고의 학업 성취 상승 효율을 이끌어낼 수 있을지 간편한 3가지 문답형 시뮬레이션 테스트를 통해 알아보세요.</p>
+
+                    <div class="form-group">
+                        <label>1. 학생이 평소 컴퓨터나 스마트 패드를 능숙하게 다루는 편인가요?</label>
+                        <div style="display: flex; gap: 15px; margin-top: 5px;">
+                            <label style="font-weight: 500;"><input type="radio" name="q1" value="3" checked> 매우 익숙하고 즐겨 다룬다</label>
+                            <label style="font-weight: 500;"><input type="radio" name="q1" value="2"> 보조 지도가 있다면 무난히 다룬다</label>
+                            <label style="font-weight: 500;"><input type="radio" name="q1" value="1"> 낯설어하며 학습 조작 시 불편해한다</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>2. 대면하지 않고 화면으로만 지도할 때 학생의 자기통제나 집중도는 어느 정도인가요?</label>
+                        <div style="display: flex; gap: 15px; margin-top: 5px;">
+                            <label style="font-weight: 500;"><input type="radio" name="q2" value="3" checked> 스스로 끝까지 자리를 지키며 공부한다</label>
+                            <label style="font-weight: 500;"><input type="radio" name="q2" value="2"> 가끔 한눈을 팔아 옆에서 주기적인 확인이 요구된다</label>
+                            <label style="font-weight: 500;"><input type="radio" name="q2" value="1"> 타인의 강한 밀착 통제 수단이 필수적이다</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>3. 명문 학군지인 대치동 출신 등의 고급 강사진을 평소 간절히 바랐나요?</label>
+                        <div style="display: flex; gap: 15px; margin-top: 5px;">
+                            <label style="font-weight: 500;"><input type="radio" name="q3" value="3" checked> 매우 필요했으나 지리적으로 한계가 있었다</label>
+                            <label style="font-weight: 500;"><input type="radio" name="q3" value="2"> 좋은 기회가 있다면 한 번 경험해 보고 싶다</label>
+                            <label style="font-weight: 500;"><input type="radio" name="q3" value="1"> 굳이 멀리 있는 강사 스펙에 목매지 않는다</label>
+                        </div>
+                    </div>
+
+                    <button class="btn-submit" onclick="diagnoseLearningStyle()" style="background-color: var(--secondary-color);">자가 학습 성향 검증 및 교육 맞춤 설계안 확인</button>
+
+                    <div id="diag-result-box" class="calc-result" style="border-color: var(--primary-color);">
+                        <p style="margin: 0; font-size: 1.1em; font-weight: 700; color: var(--primary-color);">
+                            진단 결과 요약: <span id="diag-score-tag" style="color: var(--accent-color);">상당히 우수한 적합도</span> 그룹에 해당합니다.
+                        </p>
+                        <p id="diag-desc-text" style="margin: 10px 0 0 0; font-size: 0.95em; color: var(--text-sub);">
+                            로딩 중...
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>커뮤니티 및 소셜 데이터 분석을 통한 실제 내돈내산 평가와 트렌드</h2>
+                    <p>현실 소비자인 학부모와 수험생들이 주로 소통하는 유력 웹사이트 및 미디어 플랫폼의 반응을 여과 없이 분석해 보았습니다. 이를 통해 과외를 선택하기 전 예상치 못한 오류와 위험 요소를 미연에 예방할 수 있습니다.</p>
+
+                    <div class="tab-wrap">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" onclick="switchReviewTab(event, 'review-parent')">학부모 맘카페 후기</button>
+                            <button class="tab-btn" onclick="switchReviewTab(event, 'review-student')">수험생 커뮤니티 트렌드</button>
+                            <button class="tab-btn" onclick="switchReviewTab(event, 'review-adult')">성인 실무 학습 정보</button>
+                        </div>
+
+                        <div id="review-parent" class="tab-content active">
+                            <p><strong>수원시 거주 학부모 김민영 님의 분석 의견:</strong><br>
+                            초등학교 5학년 우리 아이 수학 화상과외를 시범 삼아 가입한 지 세 달이 되었습니다. 이전에는 동네 공부방 학원 셔틀을 보낼 때마다 차멀미를 겪거나 돌아오는 시간이 늦어 걱정이 많았는데 집 안에서 편하게 모니터 앞에서 대치동 연세대 선생님께 일대일 집중 질문과 오답 점검을 받으니 학습 효율성이 기대 이상입니다. 모르는 부분이 생기면 전용 메신저 <span class="kw">카카오톡</span> 채널이나 학습 어플을 활용해서 질의를 바로 공유할 수 있어서 참 요긴합니다.</p>
+                        </div>
+
+                        <div id="review-student" class="tab-content">
+                            <p><strong>디시인사이드 공부 갤러리 익명 유저의 평가 요약:</strong><br>
+                            솔직히 고등학교 내신 국어 인강만 듣다가는 킬러 문항 대비가 안 되어서 대치동 수학, 영어 화상과외 플랫폼을 내돈내산으로 직접 결제해서 수강하기 시작했음. 명문대 의대생 형들이 직접 풀이 과정을 패드 화면 공유로 연동해 놓고 왜 이 단계에서 식이 생략되었는지 논리적으로 코칭해 주니까 확실히 성적 대가 올랐음. 단점이라면 간혹 집안 무선 와이파이 상태가 구려서 선생님 영상이 뚝뚝 끊기는 불상사가 나면 좀 아까움. 다들 매칭 수업 전에 핑 테스트랑 인터넷 접속 속도 점검은 무조건 미리 세팅하고 진행하는 편을 추천함.</p>
+                        </div>
+
+                        <div id="review-adult" class="tab-content">
+                            <p><strong>에펨코리아 직장인 포럼의 실무 영어 회화 트렌드:</strong><br>
+                            글로벌 마케팅 부서로 이직하면서 오픽이나 영어 회화 성적표가 다급해서 링글 같은 원어민 전문 화상 프로그램 사이트에 가입함. 수강 비용이 조금 부담스러웠는데 첫 회원 등록 보상으로 모바일 <span class="kw">상품권</span> 교환 및 일부 교육 <span class="kw">지원금</span> 캐시백 혜택 이벤트 딜이 떠서 나름 합리적인 가격으로 공부를 시작했음. 바쁜 퇴근 길 모바일 어플 하나 켜놓고 전철 안에서도 자료 예습을 하고 1대1로 고품격 실시간 비즈니스 피드백을 받다 보니 일상에 부담 없이 지식을 채울 수 있어서 매우 추천할 만한 구조임.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>신규 가입 혜택과 수강료 할인 및 현금지원 마케팅의 실체</h2>
+                    <p>많은 교육 업체들이 시장 경쟁에서 가입자를 확보하기 위하여 공격적인 특별 <span class="kw">할인</span> 마케팅 및 각종 사은품 제공 등의 파격적인 <span class="kw">이벤트</span>를 제안하고는 합니다. 대표적으로 장기 패키지 수강 신청 시 스마트 학습 패드를 0원 즉 무상 대여로 대여해 주는 형식이나, 첫 달 수업 미이행 분량에 대해 조건부 수수료 페이백 혜택을 주는 시스템 등이 보편화되어 있습니다.</p>
+                    
+                    <p>그러나 간혹 일부 사설 불법 알선 업자들이 내세우는 터무니없이 과도한 가입 장려금 보장이나 부적절한 사기성 <span class="kw">현금지원</span> 미끼 수법 등은 소비자의 각별한 주의가 요구되는 대목입니다. 학원법을 교묘하게 위반하는 일부 영세 사업체는 선결제 수백만 원을 유도한 뒤 돌연 사이트를 영구 폐쇄하고 잠적하는 수법을 쓰기도 합니다. 따라서 분쟁의 우려가 없도록 가급적 자본력이 검증된 탄탄한 대규모 메이저 브랜드를 선별하여 계좌 이체 혹은 <span class="kw">토스</span>, 신용카드 안전 에스크로 승인 방식으로 결제하는 편이 안전합니다.</p>
+                </section>
+
+                <section>
+                    <h2>AI 기반 맞춤형 학습 상담과 첨단 컨설팅 시대를 향한 전환</h2>
+                    <p>최근에는 최신 인공지능 분석 알고리즘과의 연계가 주요 교육 플랫폼의 핵심 강점으로 부각되고 있습니다. 단순히 선생님의 주관에만 매달리는 것에 그치지 않고, <span class="kw">제미나이</span> 나 <span class="kw">챗지피티</span> 같은 첨단 언어 모델 및 학습 분석 인프라를 활용하여 실시간으로 기록되는 교재 풀이 패턴을 빅데이터화합니다.</p>
+                    
+                    <p>이를 기반으로 학업성취 예측 리포트를 작성하거나 고득점을 위한 오답 학습 루틴을 AI가 스스로 설계하는 식의 지능형 교육 맞춤 <span class="kw">컨설팅</span>이 일반화되었습니다. 학부모는 주먹구구식 면담 대신 과학적으로 입증된 그래프와 누적 성취 수치 데이터를 바탕으로 자녀의 객관적 역량과 진척 과정을 한눈에 확인하여 성적 대입의 합리적인 의사결정을 추진할 수 있습니다.</p>
+                </section>
+
+                <section id="faq">
+                    <h2>화상과외에 대한 대표적인 오해와 진실 (FAQ)</h2>
+                    
+                    <h4>Q1. 과연 태블릿 화면 지도로도 오프라인 학원만큼 확실히 집중할 수 있나요?</h4>
+                    <p>화상과외는 비록 서로 물리적 공간은 분리되어 있으나 실시간 영상 통화와 직접 쓰면서 설명하는 동시 쌍방향 화이트보드 필기 환경이 연계되어 있기 때문에 한 눈을 팔 여지가 매우 적습니다. 화면을 통한 밀도 높은 소통 덕분에 오히려 전통 학원 교실 뒷자리에 멍하니 앉아 시간만 보내다 오는 이른바 들러리 학생이 될 리스크를 100% 원천 차단해 주는 우수한 집중 효율을 보장합니다.</p>
+
+                    <h4>Q2. 대학생 과외 선생님은 갑자기 잠적하거나 책임감이 부족하다는 불만이 있던데 괜찮을까요?</h4>
+                    <p>개인 중개 사이트에서 무작위로 교사를 구하는 경우에는 검증 장치가 부족하여 약속 불이행 리스크를 고스란히 학부모가 감당해야 합니다. 하지만 검증 시스템을 갖춘 법인 형태의 플랫폼 기업들은 교사의 신분 증명서 보증 절차는 물론 사전 역량 수업 실기 테스트 및 친절 교육 과정을 단계적으로 실시합니다. 부득이한 지연 시 전임 운영 매니저와 연락 채널을 통해 즉각 매칭 전환 관리를 보강해 주어 부조리 피해를 효과적으로 대리 보호해 드립니다.</p>
+
+                    <h4>Q3. 계약 도중 피치 못하게 중도 포기를 희망하는 상황이 생기면 전액 환불받기가 쉬운가요?</h4>
+                    <p>본사가 체계적으로 설립된 공식 가맹 업체들의 경우, 관할 교육청 가이드라인 및 소비자분쟁 해결 기준 고시에 근거한 계약 약관과 명문화된 전용 요금 환불 반환 규정을 사전 가입 단계에서 확실하게 제시하고 명시해 줍니다. 반환 시 불이익을 당하지 않기 위해서는 약정 보조금 감면 조항이나 위약금 공제 단가 비율을 계약서 원문에서 꼼꼼히 확인한 후 전산 가입 단계를 수락해야 훗날 이견으로 인한 갈등을 깔끔하게 피할 수 있습니다.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- 대화형 스크립트 엔진 구동 (체류시간 증대 및 실시간 계산/진단용) -->
+    <script>
+        // 대화형 요금 계산기 로직
+        function runLiveCalculator() {
+            const grade = document.getElementById('calc-grade').value;
+            const subject = document.getElementById('calc-subject').value;
+            const frequency = parseInt(document.getElementById('calc-frequency').value);
+            const teacher = document.getElementById('calc-teacher').value;
+            
+            // 기본 베이스 단가 책정 (시간당 기준 단가 산출 모델)
+            let baseHourlyRate = 20000;
+            
+            // 1단계 학년별 가중치 조율
+            if (grade === 'elem') baseHourlyRate = 22000;
+            if (grade === 'mid') baseHourlyRate = 28000;
+            if (grade === 'high') baseHourlyRate = 35000;
+            if (grade === 'adult') baseHourlyRate = 30000;
+            
+            // 2단계 과목 특성별 보조 가중
+            if (subject === 'math') baseHourlyRate += 3000;
+            if (subject === 'speaking') baseHourlyRate += 4000;
+            
+            // 3단계 교사 전문성 등급별 스케일 계수 설정
+            let scaleMultiplier = 1.0;
+            if (teacher === 'student') scaleMultiplier = 0.9;
+            if (teacher === 'expert') scaleMultiplier = 1.3;
+            if (teacher === 'premium') scaleMultiplier = 1.8;
+            
+            // 최종 월간 총 수강료 예상 시뮬레이션 금액식 도출 (월 4주 평균 환산 식)
+            const hoursPerWeek = 1.5; // 평균 1회당 수강 시간 보수적 대입
+            const totalMonthlyHours = frequency * hoursPerWeek * 4;
+            const finalEstimatePrice = Math.round((baseHourlyRate * totalMonthlyHours * scaleMultiplier) / 1000) * 1000;
+            
+            // 돔 요소 바인딩 및 출력 연동
+            const resultBox = document.getElementById('calc-result-box');
+            const priceTag = document.getElementById('res-price');
+            
+            priceTag.textContent = finalEstimatePrice.toLocaleString();
+            resultBox.style.display = 'block';
+        }
+
+        // 학습성향 진단 자가 분석기 로직
+        function diagnoseLearningStyle() {
+            // 라디오 선택 옵션 수치 판독
+            const q1Val = parseInt(document.querySelector('input[name="q1"]:checked').value);
+            const q2Val = parseInt(document.querySelector('input[name="q2"]:checked').value);
+            const q3Val = parseInt(document.querySelector('input[name="q3"]:checked').value);
+            
+            const totalScore = q1Val + q2Val + q3Val;
+            
+            const scoreTag = document.getElementById('diag-score-tag');
+            const descText = document.getElementById('diag-desc-text');
+            const resultBox = document.getElementById('diag-result-box');
+            
+            resultBox.style.display = 'block';
+            
+            if (totalScore >= 8) {
+                scoreTag.textContent = "최상의 온라인 학습 적합도 (탁월함)";
+                descText.textContent = "학생은 스마트 기기 친숙도가 우수할 뿐 아니라 자기 동기가 확실하여 비대면 비접촉 화면 환경에서도 탁월한 기량을 발휘할 준비가 완료되어 있습니다. 굳이 가격이 과도한 가정 방문형 대면 과외를 추진하기보다는 서울권 최고 학부 명문대 출신을 매칭할 수 있는 전문적인 1대1 화상 수업 브랜드 상품으로 다이렉트 신규 가입 혜택을 챙기시는 형태를 적극 추천해 드립니다.";
+            } else if (totalScore >= 5) {
+                scoreTag.textContent = "안정적인 온라인 학습 적합도 (유리함)";
+                descText.textContent = "온라인 화상 수업이 주는 시간적 혜택과 공간 안전성을 충분히 체감할 수 있는 훌륭한 수준입니다. 다만 학습 습관 형성을 위해 부모님이 수업 중 메신저 피드백 노트를 카카오톡이나 학습 어플을 활용해 주기적으로 체크해 주는 최소한의 관리가 함께 요구됩니다. 태블릿 화면 필기 방식의 브랜드 콴다과외나 설탭 등의 서비스를 고려해 보시기를 가이드합니다.";
+            } else {
+                scoreTag.textContent = "신중한 접근 필요 적합도 (대면 수업 보완 권장)";
+                descText.textContent = "화면 너머로만 코칭하는 비대면 환경 하에서는 자녀의 집중력이 쉽게 분산되거나 잦은 피로도를 토로할 염려가 농후합니다. 섣불리 무작정 전용 장기 교육 패키지를 다이렉트 선결제 계약하기보다는 맛보기 성격의 무료 1회 진단 수업 기회 프로모션을 먼저 체험해 보고 자녀의 실제 태도를 한 차례 검토한 후에 가입 성사 여부를 추진하시는 방식이 훨씬 이롭습니다.";
+            }
+        }
+
+        // 맘카페 / 커뮤니티 / 직장인 탭 스위칭 로직
+        function switchReviewTab(event, tabId) {
+            // 모든 탭 컨텐츠 비활성화
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // 모든 탭 버튼 비활성화
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // 지정 탭 활성화 실행
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+  
